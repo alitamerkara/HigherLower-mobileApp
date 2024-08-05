@@ -1,6 +1,7 @@
 import { View, TextInput, StyleSheet, Alert } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 import { useState } from "react";
+import Title from "../components/Title";
 
 const StartGame = ({ setActualNumber }) => {
   const [value, setValue] = useState("");
@@ -24,6 +25,7 @@ const StartGame = ({ setActualNumber }) => {
   };
   return (
     <View style={style.inputContainer}>
+      <Title>Enter a number between 0 and 99</Title>
       <TextInput
         style={style.input}
         maxLength={2}
