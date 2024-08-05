@@ -27,6 +27,8 @@ const style = StyleSheet.create({
   containerText: {
     color: "white",
     textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
 
