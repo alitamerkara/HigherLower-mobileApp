@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
 import Title from "../components/Title";
 import PrimaryButton from "../components/PrimaryButton";
 
@@ -20,7 +20,7 @@ const GameOver = ({ handlePress, number, count }) => {
     </View>
   );
 };
-
+const deviceWidth = Dimensions.get("window").width;
 const styles = StyleSheet.create({
   container: {
     marginTop: 100,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: "purple",
     overflow: "hidden",
-    margin: 36,
+    margin: deviceWidth < 380 ? 18 : 36,
   },
   image: {
     width: "100%",
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "center",
-    marginVertical: 10,
+    marginVertical: 20,
+    paddingHorizontal: 10,
   },
   text: {
     color: "gold",

@@ -1,4 +1,4 @@
-import { View, TextInput, StyleSheet, Alert } from "react-native";
+import { View, TextInput, StyleSheet, Alert, Dimensions } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 import { useState } from "react";
 import Title from "../components/Title";
@@ -25,7 +25,7 @@ const StartGame = ({ setActualNumber }) => {
   };
   return (
     <View style={style.inputContainer}>
-      <Title>Enter a number between 0 and 99</Title>
+      <Title>Enter a number</Title>
       <TextInput
         style={style.input}
         maxLength={2}
@@ -44,25 +44,25 @@ const StartGame = ({ setActualNumber }) => {
     </View>
   );
 };
-
+const deviceWidth = Dimensions.get("window").width;
 const style = StyleSheet.create({
   inputContainer: {
     alignItems: "center",
     backgroundColor: "purple",
-    marginTop: 100,
-    marginHorizontal: 24,
-    padding: 16,
+    marginTop: deviceWidth < 392 ? 120 : 150,
+    marginHorizontal: deviceWidth < 392 ? 24 : 28,
+    padding: deviceWidth < 392 ? 16 : 24,
     borderRadius: 10,
     elevation: 4,
   },
   input: {
-    width: 50,
+    width: deviceWidth < 392 ? 50 : 70,
     borderBottomColor: "gold",
     borderBottomWidth: 3,
     color: "gold",
     textAlign: "center",
-    fontSize: 30,
-    height: 50,
+    fontSize: deviceWidth < 392 ? 30 : 40,
+    height: deviceWidth < 392 ? 50 : 60,
     fontWeight: "bold",
     margin: 10,
   },

@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, Alert, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Alert,
+  FlatList,
+  Dimensions,
+} from "react-native";
 import Title from "../components/Title";
 import PrimaryButton from "../components/PrimaryButton";
 import { useEffect, useState } from "react";
@@ -33,7 +40,7 @@ const GameScreen = ({ number, setGameOver, setCount }) => {
       setPastGuess([...pastGuess, currentGuess]);
       setCurrentGuess(newNumber);
     } else if (direction === "greater") {
-      min = currentGuess;
+      min = currentGuess + 1;
       let newNumber = randomNumber(min, max, currentGuess);
       setPastGuess([...pastGuess, currentGuess]);
       setCurrentGuess(newNumber);
@@ -79,29 +86,30 @@ const GameScreen = ({ number, setGameOver, setCount }) => {
     </View>
   );
 };
-
+const deviceWidth = Dimensions.get("window").width;
 const styles = StyleSheet.create({
   container: {
-    marginTop: 100,
+    marginTop: deviceWidth < 392 ? 120 : 150,
     alignItems: "center",
   },
   guess: {
     alignItems: "center",
     backgroundColor: "purple",
     marginHorizontal: 24,
-    padding: 16,
+    padding: deviceWidth < 392 ? 16 : 24,
     borderRadius: 10,
   },
   screen: {
-    fontSize: 70,
+    fontSize: deviceWidth < 392 ? 70 : 80,
     color: "purple",
     fontWeight: "bold",
     borderWidth: 4,
     borderColor: "purple",
     borderRadius: 25,
-    width: 200,
+    width: deviceWidth < 392 ? 200 : 250,
     textAlign: "center",
     margin: 15,
+    paddingVertical: deviceWidth < 392 ? 6 : 12,
   },
   buttonContainer: {
     flexDirection: "row",
@@ -123,7 +131,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 10,
     textAlign: "center",
-    marginVertical: 15,
+    marginVertical: deviceWidth < 392 ? 10 : 20,
   },
 });
 export default GameScreen;
